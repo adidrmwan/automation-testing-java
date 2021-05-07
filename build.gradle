@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.21"
+    id "io.freefair.lombok" version "5.3.0"
+    id 'se.thinkcode.cucumber-runner' version '0.0.8'
+}
+
+group 'test.bukalapak'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+cucumber {
+    if (this.hasProperty("env")) {
+        System.setProperty("spring.profiles.active", "$env")
+    }
+
+    main = 'io.cucumber.core.cli.Main'
+    glue = 'classpath:test.bukalapak'
+    plugin = ['pretty', "json:build/cucumber.json", "html:build/result"]
+}
+
+cucumberReports {
+    outputDir = file("$projectDir/build/generated-reports")
+    buildId = System.getenv('BUILD_NUMBER').toString()
+    reports = files("$projectDir/build/cucumber.json")
+    trendsLimit = 10
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.18'
+
+    //LOMBOK
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    //CUCUMBER + SELENIUM
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '${junitVersion}'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '5.4.1'
+    testCompile group: 'io.cucumber', name: 'cucumber-junit', version: '5.4.1'
+    compile group: 'io.appium', name: 'java-client', version: '7.3.0'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.2'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.2.2'
+
+    //GUAVA
+    compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+
+    //REPORTING
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '5.2.2'
+
+    //SPRING
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.2.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '2.2.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.2.5.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.2.4.RELEASE'
+    compile group: 'io.cucumber', name: 'cucumber-spring', version: '5.4.1'
+
+    //JSON
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.0'
+    compile 'com.github.javafaker:javafaker:1.0.2'
+}

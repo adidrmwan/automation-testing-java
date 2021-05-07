@@ -1,0 +1,10 @@
+spring:
+  profiles: dev
+
+config:
+  web:
+    baseUrl: https://www.bukalapak.com
+
+user:
+  customer:
+    email: adidrmwan17@gmail.com
