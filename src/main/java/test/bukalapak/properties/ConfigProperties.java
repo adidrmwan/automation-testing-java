@@ -19,4 +19,5 @@ public class ConfigProperties {
     public static class Web {
         private String baseUrl;
     }
+
 }
