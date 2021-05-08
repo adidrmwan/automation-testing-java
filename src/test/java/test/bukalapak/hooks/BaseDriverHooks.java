@@ -1,24 +1,35 @@
 package test.bukalapak.hooks;
 
 import io.cucumber.java.After;
-import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import test.bukalapak.driver.WebDriverPool;
+import test.bukalapak.driver.DriverPool;
+
+import java.util.Optional;
 
 public class BaseDriverHooks {
-
     @Autowired
-    WebDriverPool webDriverPool;
+    DriverPool driverPool;
 
     @After
     public void afterTest() {
-        WebDriver webdriver = webDriverPool.getWebDriver()
-                .getOrDefault(Thread.currentThread().getName(), null);
-
-        // Quit the driver
-        if (webdriver != null) {
-            webdriver.quit();
-            webDriverPool.setWebDriver(Thread.currentThread().getName(), null);
-        }
+        quitWebdrivers(driverPool);
     }
+
+    public void quitWebdrivers(DriverPool drivers) {
+        Optional.ofNullable(drivers.getWebDriver())
+                .ifPresent(
+                        driver -> {
+                            driver.quit();
+                            drivers.setWebDriver(null);
+                        });
+
+        Optional.ofNullable(drivers.getAndroidDriver())
+                .ifPresent(
+                        driver -> {
+                            driver.quit();
+                            drivers.setAndroidDriver(null);
+                        });
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package test.bukalapak.stepdefinitions.bukalapak.android;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,10 +11,12 @@ import test.bukalapak.pages.android.LoginScreen;
 import test.bukalapak.pages.android.RegisterScreen;
 
 public class RegisterSteps {
+    public static String password = "password!2";
     @Autowired
     LoginScreen loginScreen;
     @Autowired
     RegisterScreen registerScreen;
+
     @Given("android user on landing screen")
     public void androidUserOnLandingScreen() {
         boolean actual = loginScreen.isOnPage();
@@ -33,22 +36,24 @@ public class RegisterSteps {
 
     @When("android user input name")
     public void androidUserInputName() {
-        registerScreen.inputName("adi");
+        Faker faker = new Faker();
+        String name = faker.name().firstName();
+        registerScreen.inputName(name);
     }
 
     @And("android user input invalid email")
     public void androidUserInputInvalidEmail() {
-        registerScreen.inputEmail("adi");
+        registerScreen.inputEmail(randUsername());
     }
 
     @And("android user input password")
     public void androidUserInputPassword() {
-        registerScreen.inputPassword("adi");
+        registerScreen.inputPassword(password);
     }
 
     @And("android user input confirmation password")
     public void androidUserInputConfirmationPassword() {
-        registerScreen.inputConfirmPassword("adi");
+        registerScreen.inputConfirmPassword(password);
     }
 
     @And("android user tap register button")
@@ -58,7 +63,25 @@ public class RegisterSteps {
 
     @Then("android user see error message invalid email")
     public void androidUserSeeErrorMessageInvalidEmail() {
-        boolean actual = registerScreen.isErrorMessageDisplay();
+        boolean actual = registerScreen.isErrorInvalidEmailMessageDisplay();
         Assert.assertTrue(actual);
     }
+
+    @And("android user input valid email")
+    public void androidUserInputValidEmail() {
+        String email = randUsername() + "@gmail.com";
+        registerScreen.inputEmail(email);
+    }
+
+    @Then("android user see {string} message")
+    public void androidUserSeeMessage(String message) {
+        String actual = registerScreen.getToastMessage();
+        Assert.assertEquals(actual, message);
+    }
+
+    private String randUsername() {
+        Faker faker = new Faker();
+        return faker.name().username();
+    }
+
 }

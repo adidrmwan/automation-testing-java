@@ -14,34 +14,20 @@ import test.bukalapak.properties.DriverAndroidProperties;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 @Data
 @Service
 public class AndroidDriverPool {
+
     @Autowired
     DriverAndroidProperties driverAndroidProperties;
 
     @Autowired
     ConfigProperties configProperties;
 
-    private HashMap<String, AndroidDriver> androidDriver = new HashMap<>();
 
-    public void setAndroidDriver(String sessionName, AndroidDriver androidDriver) {
-        this.androidDriver.put(sessionName, androidDriver);
-    }
-
-    public AndroidDriver getAndroidDriver(String sessionName) {
-        AndroidDriver androidDriver = this.androidDriver.getOrDefault(sessionName, null);
-        if (androidDriver == null) {
-            androidDriver = initiateAndroidDriver();
-        }
-        return androidDriver;
-    }
-
-
-    public AndroidDriver initiateAndroidDriver() {
+    public AndroidDriver create() {
         AndroidDriver<AndroidElement> driver = null;
         DesiredCapabilities caps = new DesiredCapabilities();
 

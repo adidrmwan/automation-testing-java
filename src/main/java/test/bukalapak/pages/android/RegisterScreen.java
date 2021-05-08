@@ -12,23 +12,27 @@ public class RegisterScreen extends AndroidPageObject {
     }
 
     private By emailField() {
-        return MobileBy.id("textInputEditTextName");
+        return MobileBy.id("textInputEditTextEmail");
     }
 
     private By passwordField() {
-        return MobileBy.id("textInputEditTextName");
+        return MobileBy.id("textInputEditTextPassword");
     }
 
     private By confirmPasswordField() {
-        return MobileBy.id("textInputEditTextName");
+        return MobileBy.id("textInputEditTextConfirmPassword");
     }
 
     private By registerButton() {
-        return MobileBy.id("textInputEditTextName");
+        return MobileBy.id("appCompatButtonRegister");
     }
 
-    private By errorMessage() {
-        return MobileBy.xpath("//*[contains(@resource-id, \"textInputEditTextName\")]/following-sibling::android.widget.TextView");
+    private By errorInvalidEmailMessage() {
+        return MobileBy.xpath("//*[contains(@resource-id, 'textInputLayoutEmail')]/descendant::android.widget.TextView");
+    }
+
+    private By toastMessage() {
+        return MobileBy.id("snackbar_text");
     }
 
     public boolean isOnPage() {
@@ -55,7 +59,11 @@ public class RegisterScreen extends AndroidPageObject {
         onClick(registerButton());
     }
 
-    public boolean isErrorMessageDisplay() {
-        return waitUntilVisible(errorMessage()).isDisplayed();
+    public boolean isErrorInvalidEmailMessageDisplay() {
+        return waitUntilVisible(errorInvalidEmailMessage()).isDisplayed();
+    }
+
+    public String getToastMessage() {
+        return waitUntilVisible(toastMessage()).getText();
     }
 }
