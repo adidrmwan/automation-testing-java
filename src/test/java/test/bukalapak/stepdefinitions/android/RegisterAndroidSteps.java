@@ -1,4 +1,4 @@
-package test.bukalapak.stepdefinitions.bukalapak.android;
+package test.bukalapak.stepdefinitions.android;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -10,7 +10,7 @@ import org.testng.Assert;
 import test.bukalapak.pages.android.LoginScreen;
 import test.bukalapak.pages.android.RegisterScreen;
 
-public class RegisterSteps {
+public class RegisterAndroidSteps {
     public static String password = "password!2";
     @Autowired
     LoginScreen loginScreen;

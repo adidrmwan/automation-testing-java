@@ -1,4 +1,4 @@
-package test.bukalapak.stepdefinitions.bukalapak.web;
+package test.bukalapak.stepdefinitions.web;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
