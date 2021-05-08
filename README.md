@@ -8,8 +8,9 @@ System Under Test:
 Features:
 1. REST API using rest-assured
 2. Junit
-2. Selenium for Website
+3. Selenium for Website
 4. Cucumber
+5. Appium for Android
 
 ## Prerequisites
 * [JDK 11](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A)
