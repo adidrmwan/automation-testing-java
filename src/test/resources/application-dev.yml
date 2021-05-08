@@ -4,6 +4,11 @@ spring:
 config:
   web:
     baseUrl: https://www.bukalapak.com
+  android:
+    appPackage: "com.loginmodule.learning"
+    appActivity: "com.loginmodule.learning.activities.LoginActivity"
+    appPath: /APP/app.apk
+    name: "Login Register"
 
 user:
   customer:

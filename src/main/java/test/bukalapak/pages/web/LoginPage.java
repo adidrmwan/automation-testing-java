@@ -1,10 +1,10 @@
-package test.bukalapak.pages;
+package test.bukalapak.pages.web;
 
 import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.bukalapak.pageobject.BasePageObject;
 
-@Component("test.bukalapak.pages.LoginPage")
+@Component("test.bukalapak.pages.web.LoginPage")
 public class LoginPage extends BasePageObject {
     private By title() {
         return By.xpath("//div[contains(@class,'heading')]/span");

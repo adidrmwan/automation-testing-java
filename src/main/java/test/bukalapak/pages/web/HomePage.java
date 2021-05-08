@@ -1,4 +1,4 @@
-package test.bukalapak.pages;
+package test.bukalapak.pages.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,7 @@ import test.bukalapak.properties.ConfigProperties;
 
 import java.util.List;
 
-@Component("test.bukalapak.pages.HomePage")
+@Component("test.bukalapak.pages.web.HomePage")
 public class HomePage extends BasePageObject {
     @Autowired
     ConfigProperties configProperties;

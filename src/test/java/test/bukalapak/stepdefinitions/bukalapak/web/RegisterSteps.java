@@ -1,12 +1,12 @@
-package test.bukalapak.stepdefinitions.bukalapak;
+package test.bukalapak.stepdefinitions.bukalapak.web;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
-import test.bukalapak.pages.HomePage;
-import test.bukalapak.pages.RegisterPage;
+import test.bukalapak.pages.web.HomePage;
+import test.bukalapak.pages.web.RegisterPage;
 
 public class RegisterSteps {
     @Autowired

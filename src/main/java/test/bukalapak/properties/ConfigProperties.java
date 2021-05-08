@@ -14,10 +14,19 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigProperties {
 
     private Web web;
+    private Android android;
 
     @Data
     public static class Web {
         private String baseUrl;
+    }
+
+    @Data
+    public static class Android {
+        private String appPackage;
+        private String appActivity;
+        private String appPath;
+        private String name;
     }
 
 }

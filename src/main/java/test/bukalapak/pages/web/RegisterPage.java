@@ -1,10 +1,10 @@
-package test.bukalapak.pages;
+package test.bukalapak.pages.web;
 
 import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.bukalapak.pageobject.BasePageObject;
 
-@Component("test.bukalapak.pages.RegisterPage")
+@Component("test.bukalapak.pages.web.RegisterScreen")
 public class RegisterPage extends BasePageObject {
     private By title() {
         return By.xpath("//p[contains(text(), 'Daftar dulu, yuk')]");
