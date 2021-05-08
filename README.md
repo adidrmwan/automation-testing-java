@@ -3,6 +3,7 @@
 System Under Test:
 1. Website
 2. API
+3. Android
 
 Features:
 1. REST API using rest-assured
@@ -23,13 +24,23 @@ Features:
 
 ## Getting started
 1. Clone the repository
+2. Start the Appium Server
+   > appium --port 4723
+3. Start android emulator or connect with real device
 
-## Cucumber for Java
+## Intellij Plugin
+### Cucumber for Java
 Add IntelliJ Cucumber for Java plugin:
 
 * Open `Preferences` (⌘ + ,)
 * Go to `Plugins > Marketplace`
 * Search for `Cucumber for Java` and Install
+
+### Lombok Plugin
+Add IntelliJ Cucumber for Java plugin:
+* Open `Preferences` (⌘ + ,)
+* Go to `Plugins > Marketplace`
+* Search for `Lombok` and Install
 
 ## Running the Test
 * To execute API Test cases
@@ -37,6 +48,9 @@ Add IntelliJ Cucumber for Java plugin:
 
 * To execute Website Test cases
   > ./gradlew clean cucumber --tags @Web generateCucumberReports
+  
+* To execute Android Test cases
+    > ./gradlew clean cucumber --tags @Android generateCucumberReports
 
 ## Report
 * Find the reporting file on `build/customreport/overview-features.html`
