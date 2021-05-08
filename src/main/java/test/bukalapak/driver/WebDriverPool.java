@@ -2,7 +2,6 @@ package test.bukalapak.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Data;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,7 +41,6 @@ public class WebDriverPool {
                 chromeOptions.addArguments("--disable-dev-shm-usage");
                 chromeOptions.addArguments("--incognito", "--start-maximized");
                 //set desired capabilities
-                chromeOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
                 chromeOptions.setCapability(CapabilityType.BROWSER_NAME, browser);
                 driver = new ChromeDriver(chromeOptions);
                 break;
