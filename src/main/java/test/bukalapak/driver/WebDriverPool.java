@@ -9,12 +9,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test.bukalapak.properties.DriverWebProperties;
 
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 @Data
@@ -23,21 +21,7 @@ public class WebDriverPool {
     @Autowired
     DriverWebProperties driverWebProperties;
 
-    private HashMap<String, WebDriver> webDriver = new HashMap<>();
-
-    public WebDriver getWebDriver(String sessionName) {
-        WebDriver webDriver = this.webDriver.getOrDefault(sessionName, null);
-        if (webDriver == null) {
-            webDriver = initiateWebDriver();
-        }
-        return webDriver;
-    }
-
-    public void setWebDriver(String sessionName, WebDriver webDriver) {
-        this.webDriver.put(sessionName, webDriver);
-    }
-
-    public WebDriver initiateWebDriver() {
+    public WebDriver create() {
         WebDriver driver = null;
         String browser = driverWebProperties.getBrowser();
 
@@ -66,7 +50,6 @@ public class WebDriverPool {
 
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        setWebDriver(Thread.currentThread().getName(), driver);
         return driver;
     }
 }

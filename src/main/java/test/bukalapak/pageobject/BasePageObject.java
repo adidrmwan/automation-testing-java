@@ -7,16 +7,22 @@ import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import test.bukalapak.driver.DriverPool;
 import test.bukalapak.driver.WebDriverPool;
 
 import java.util.List;
 
 public class BasePageObject {
     @Autowired
+    DriverPool driver;
+    @Autowired
     WebDriverPool webDriverPool;
 
     public WebDriver getDriver() {
-        return webDriverPool.getWebDriver(Thread.currentThread().getName());
+        if (this.driver.getWebDriver() == null) {
+            this.driver.setWebDriver(this.webDriverPool.create());
+        }
+        return this.driver.getWebDriver();
     }
 
     public WebDriverWait onWait() {
