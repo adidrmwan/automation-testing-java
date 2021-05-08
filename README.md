@@ -1,7 +1,7 @@
 # AUTOMATION TESTING - JAVA
 
 System Under Test:
-1. Bukalapak Website
+1. Website
 2. API
 
 Features:
