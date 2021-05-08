@@ -1,4 +1,4 @@
-@Android @Register
+@Android @RegisterAndroid
 Feature: User be able to register
 
   Background:

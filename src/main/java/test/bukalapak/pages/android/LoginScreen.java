@@ -16,11 +16,39 @@ public class LoginScreen extends AndroidPageObject {
         return MobileBy.id("appCompatButtonLogin");
     }
 
+    private By emailField() {
+        return MobileBy.id("textInputEditTextEmail");
+    }
+
+    private By passwordField() {
+        return MobileBy.id("textInputEditTextPassword");
+    }
+
+    private By toastMessage() {
+        return MobileBy.id("snackbar_text");
+    }
+
     public boolean isOnPage() {
         return waitUntilPresence(loginButton()).isDisplayed();
     }
 
     public void tapRegisterLink() {
         onClick(registerLink());
+    }
+
+    public void inputEmail(String email) {
+        onType(emailField(), email);
+    }
+
+    public void inputPassword(String password) {
+        onType(passwordField(), password);
+    }
+
+    public void tapLoginButton(){
+        onClick(loginButton());
+    }
+
+    public String getToastMessage() {
+        return waitUntilVisible(toastMessage()).getText();
     }
 }
