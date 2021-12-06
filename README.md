@@ -45,7 +45,7 @@ Add IntelliJ Cucumber for Java plugin:
 
 ## Running the Test
 * To execute API Test cases
-  > ./gradlew clean test --tests test.bukalapak.rest.Posts
+  > ./gradlew clean test --tests test.automation.rest.Posts
 
 * To execute Website Test cases
   > ./gradlew clean cucumber --tags @Web generateCucumberReports

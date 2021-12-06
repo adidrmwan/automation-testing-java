@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         strict = true,
         plugin = {"json:build/cucumber.json", "pretty", "html:build/result"},
         features = "src/test/resources/features",
-        glue = {"test.bukalapak"},
+        glue = {"test.automation"},
         tags = {""}
 )
 public class CucumberRunner {
