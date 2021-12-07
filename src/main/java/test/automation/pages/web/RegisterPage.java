@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.automation.pageobject.BasePageObject;
 
-@Component("test.bukalapak.pages.web.RegisterScreen")
+@Component("test.automation.pages.web.RegisterScreen")
 public class RegisterPage extends BasePageObject {
     private By title() {
         return By.xpath("//p[contains(text(), 'Daftar dulu, yuk')]");

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import test.automation.driver.AndroidDriverPool;
 
-@Component("test.bukalapak.pageobject.AndroidPageObject")
+@Component("test.automation.pageobject.AndroidPageObject")
 public class AndroidPageObject extends BasePageObject {
     @Autowired
     AndroidDriverPool androidDriverPool;

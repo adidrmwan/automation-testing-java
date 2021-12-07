@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.automation.pageobject.AndroidPageObject;
 
-@Component("test.bukalapak.pages.android.LoginScreen")
+@Component("test.automation.pages.android.LoginScreen")
 public class LoginScreen extends AndroidPageObject {
     private By registerLink() {
         return MobileBy.id("textViewLinkRegister");

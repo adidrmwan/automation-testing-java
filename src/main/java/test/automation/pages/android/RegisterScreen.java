@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.automation.pageobject.AndroidPageObject;
 
-@Component("test.bukalapak.pages.android.RegisterScreen")
+@Component("test.automation.pages.android.RegisterScreen")
 public class RegisterScreen extends AndroidPageObject {
     private By nameField() {
         return MobileBy.id("textInputEditTextName");

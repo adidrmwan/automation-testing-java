@@ -10,7 +10,7 @@ import test.automation.properties.ConfigProperties;
 
 import java.util.List;
 
-@Component("test.bukalapak.pages.web.HomePage")
+@Component("test.automation.pages.web.HomePage")
 public class HomePage extends BasePageObject {
     @Autowired
     ConfigProperties configProperties;

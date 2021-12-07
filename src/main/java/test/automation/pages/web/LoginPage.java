@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 import test.automation.pageobject.BasePageObject;
 
-@Component("test.bukalapak.pages.web.LoginPage")
+@Component("test.automation.pages.web.LoginPage")
 public class LoginPage extends BasePageObject {
     private By title() {
         return By.xpath("//div[contains(@class,'heading')]/span");
